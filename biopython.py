@@ -1,7 +1,7 @@
 from Bio.Seq import Seq
 from Bio import Entrez, SeqIO
 Entrez.email="amlansaikia1918@gmail.com"
-handle = Entrez.efetch(db="nucleotide", id="AY851612", rettype="gb", retmode="text")
+handle = Entrez.efetch(db="nucleotide", id="MN908947", rettype="gb", retmode="text")
 recs=list(SeqIO.parse(handle,'gb'))
 handle.close()
 print(recs)
@@ -50,3 +50,12 @@ print(plt.bar(common_amino.keys(),common_amino.values(),width,color=['b','r','m'
 print(plt.xlabel('Amino Acids'))
 print(plt.ylabel('Frequency'))
 print(plt.title('Protein Sequence Frequency'))
+
+print(f"Covid-19 genome has {sum(common_amino.values())} amino acids")
+
+# the split function splits the sequence at any stop codon and keeps the amino acids chain seperated
+
+proteins=covid_aa.split('*')
+print(proteins[:5])
+
+print(f"We have {len(proteins)} amino acids in the covid-19 genome")
