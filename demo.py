@@ -20,7 +20,7 @@ print(f'The genome of Covid -19 consist of {len(covid_dna)} nucleotides')
 # }
 # print(count_nucleotides)
 
-# import matplotlib.pyplot as plt
+import matplotlib.pyplot as plt
 # width=0.5
 # print(plt.bar(count_nucleotides.keys(),count_nucleotides.values(),width,color=['b','r','m','c']))
 # print(plt.xlabel('Nucleotide'))
@@ -42,3 +42,11 @@ print("##########most common amino acids############")
 from collections import Counter
 common_amino=Counter(covid_aa)
 common_amino.most_common(10)
+
+del common_amino['*']
+
+width=0.5
+print(plt.bar(common_amino.keys(),common_amino.values(),width,colors=['b','r','m','c']))
+print(plt.xlabel('Amino Acids'))
+print(plt.ylabel('Frequency'))
+print(plt.title('Protein Sequence Frequency'))
